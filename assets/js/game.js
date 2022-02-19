@@ -6,14 +6,14 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-// You can also log multiple values at once like this
-console.log(playerName, playerAttack, playerHealth, playerMoney);
+// You can log multiple values at once like this
+//console.log(playerName, playerAttack, playerHealth, playerMoney);
 
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-var fight = function() {
+var fight = function(enemyName) {
 // A fight alert letting users know they are about to start a fight
     window.alert("The battle is about to begin!");
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
@@ -65,15 +65,17 @@ var fight = function() {
         else {
             fight();
         }
-        
-        if (playerHealth === 0) {
-            console.log("This will not run.");
-        } 
-        else {
-            console.log("This will run instead.");
-        }
     }
 }
 
+if (playerHealth === 0) {
+    console.log("This will not run.");
+} 
+else {
+    console.log("This will run instead.");
+}
+
 //This runs the code in the page:
-fight();
+for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+}
