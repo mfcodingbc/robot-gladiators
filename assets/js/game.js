@@ -7,6 +7,22 @@ window.alert("Welcome to Robot Gladiators!");
 // You can log multiple values at once like this
 //console.log(variable1, variable2, variable3, etc.);
 
+// function to generate a random numeric value
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return value;
+};
+
+var getPlayerName = function() {
+    var name = "";
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+    console.log("Your robot's name is " + name);
+    return name;
+}
+
 // fight function (now with parameter for enemy's name)
 var fight = function(enemy) {
     while (playerInfo.health > 0 && enemy.health > 0) {
@@ -21,10 +37,10 @@ var fight = function(enemy) {
             // if yes (true), leave fight
             if (confirmSkip) {
                 window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
-            // subtract money from playerInfo.money for skipping
-            playerInfo.money = Math.max(0, playerInfo.money - 10);
-            console.log("playerInfo.money", playerInfo.money)
-            break;
+                // subtract money from playerInfo.money for skipping
+                playerInfo.money = Math.max(0, playerInfo.money - 10);
+                console.log("playerInfo.money", playerInfo.money)
+                break;
             }
         }
 
@@ -162,15 +178,9 @@ var shopOptionPrompt = window.prompt(
     }
 };
 
-var randomNumber = function(min, max) {
-    var value = Math.floor(Math.random() * (max - min + 1) + min);
-
-    return value;
-};
-
 // This prompt runs after alert is closed and will store user input in variable 'playerInfo'
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
